@@ -11,4 +11,9 @@ class Post extends Model
 
     // Converting publised_at as carbon instance for manage dates
     protected $dates = ['published_at'];
+
+    public function category() // $post->category->name
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
