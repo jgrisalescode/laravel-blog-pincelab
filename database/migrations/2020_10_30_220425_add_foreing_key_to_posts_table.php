@@ -14,7 +14,7 @@ class AddForeingKeyToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->after('body');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
