@@ -2,19 +2,20 @@
 
 @section('content')
 <section class="posts container">
+    @foreach($posts as $post)
     <article class="post no-image">
         <div class="content-post">
             <header class="container-flex space-between">
                 <div class="date">
-                    <span class="c-gray-1">sep 20</span>
+                    <span class="c-gray-1">{{$post->published_at->format('M d')}}</span>
                 </div>
                 <div class="post-category">
                     <span class="category text-capitalize">i do travel</span>
                 </div>
             </header>
-            <h1>No difference how many peaks you reach if there was no pleasure in the climb.</h1>
+            <h1>{{$post->title}}</h1>
             <div class="divider"></div>
-            <p>Quisque congue lacus mattis massa luctus, nec hendrerit purus aliquet. Ut ac elementum urna. Pellentesque suscipit metus et egestas congue. Duis eu pellentesque turpis, ut maximus metus. Sed ultrices tellus vitae rutrum congue. Fusce luctus augue id nisl suscipit, vel sollicitudin orci egestas. Morbi posuere venenatis ipsum, ac vestibulum quam dignissim efficitur. Ut vitae rutrum augue, in volutpat quam. Cras a viverra ipsum. Aenean ut consequat ex, vitae vulputate nunc. Vestibulum metus nisi, aliquam sed tincidunt sit amet, pretium et augue.</p>
+            <p>{{$post->excert}}</p>
             <footer class="container-flex space-between">
                 <div class="read-more">
                     <a href="#" class="text-uppercase c-green">read more</a>
@@ -27,7 +28,8 @@
             </footer>
         </div>
     </article>
-
+    @endforeach
+    {{--
     <article class="post w-image">
         <figure><img src="img/img-post-1.png" alt="" class="img-responsive"></figure>
         <div class="content-post">
@@ -226,7 +228,7 @@
             </footer>
         </div>
     </article>
-
+    --}}
 </section><!-- fin del div.posts.container -->
 
 <div class="pagination">
