@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/admin', function (){
     return view('admin.dashboard');
 });
+
+Auth::routes(['register' => false]); // ['register' => false] inside routes() if you do not want that the users can register
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
