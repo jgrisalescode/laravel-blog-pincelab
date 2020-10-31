@@ -24,7 +24,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'excerpt' => $this->faker->paragraph(),
+            'excerpt' => $this->faker->sentence(7),
             'body' => $this->faker->paragraph(),
             'category_id' => $this->faker->numberBetween(1,3),
             'published_at' => Carbon::now()->subDays($this->faker->numberBetween(1,4)),

@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\PostsController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
-Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts');
+Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts.index');
 
 // Routes for login system
 Auth::routes(['register' => false]); // ['register' => false] inside routes() if you do not want that the users can register
