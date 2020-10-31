@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Admin\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $posts = \App\Models\Post::all();
-    return view('welcome', compact('posts'));
-})->name('home')->middleware('auth');
+Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts');
 
-Route::get('/home', function (){
-    return view('admin.dashboard');
-})->middleware('auth');
-
+// Routes for login system
 Auth::routes(['register' => false]); // ['register' => false] inside routes() if you do not want that the users can register
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
