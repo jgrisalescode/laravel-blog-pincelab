@@ -17,3 +17,7 @@ Route::get('/', function () {
     $posts = \App\Models\Post::all();
     return view('welcome', compact('posts'));
 });
+
+Route::get('/admin', function (){
+    return view('admin.dashboard');
+});
