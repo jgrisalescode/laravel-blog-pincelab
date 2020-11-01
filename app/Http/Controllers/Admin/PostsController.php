@@ -27,4 +27,21 @@ class PostsController extends Controller
         $tags = Tag::all();
         return view('admin.posts.create', compact('categories', 'tags'));
     }
+
+    public function store(Request $request)
+    {
+        // Validation
+        // Save the post
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->get('body');
+        $post->excerpt = $request->get('excerpt');
+        // If you have any error trying save the date use Carbon::parse(***) method;
+        $post->published_at = $request->published_at;
+        $post->category_id = $request->category;
+        $post->save();
+        // Tags
+        $post->tags()->attach($request->get('tags'));
+        return back()->with('flash', 'Tu publicación ha sido creada');
+    }
 }

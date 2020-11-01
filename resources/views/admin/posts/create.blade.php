@@ -12,7 +12,8 @@
 @endsection
 @section('content')
     <div class="row">
-        <form action="">
+        <form action="{{route('admin.posts.store')}}" method="POST">
+            @csrf
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-body">
@@ -42,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="category_id">Categorías</label>
-                            <select name="category_id" id="" class="form-control">
+                            <select name="category" id="category" class="form-control">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -50,13 +51,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for=tags">Etiquetas</label>
+                            <label>Etiquetas</label>
                             <select
                                 class="form-control select2"
                                 multiple="multiple"
-                                name="tags"
+                                name="tags[]"
                                 data-placeholder="Seleciona una o más etiquetas"
-                                style="width: 100%;">
+                                style="width: 100%;"
+                            >
                                 @foreach($tags as $tag)
                                     <option value="{{ $tag->id }}">{{$tag->name}}</option>
                                 @endforeach
@@ -91,12 +93,14 @@
     <!-- Select2 -->
     <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
     <script>
-        //Date picker
-        $('#datepicker').datepicker({
-        autoclose: true
+        $(document).ready(function (){
+            //Initialize Select2 Elements
+            $('.select2').select2();
+            //Date picker
+            $('#datepicker').datepicker({
+            autoclose: true
+            });
+            CKEDITOR.replace('editor1');
         });
-        CKEDITOR.replace('editor1');
-        //Initialize Select2 Elements
-        $(".select2").select2();
     </script>
 @endpush
