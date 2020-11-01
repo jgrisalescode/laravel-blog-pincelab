@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="body">Contenido de la publicación</label>
-                            <textarea class="form-control" name="body" id="body" rows="10" placeholder="Ingresa el contenido completo de la publicación"></textarea>
+                            <textarea class="form-control" name="body" id="editor1" rows="10" placeholder="Ingresa el contenido completo de la publicación"></textarea>
                         </div>
                     </div>
                 </div>
@@ -40,12 +40,25 @@
                             </div>
                             <!-- /.input group -->
                         </div>
-                        <div class="form group">
+                        <div class="form-group">
                             <label for="category_id">Categorías</label>
                             <select name="category_id" id="" class="form-control">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for=tags">Etiquetas</label>
+                            <select
+                                class="form-control select2"
+                                multiple="multiple"
+                                name="tags"
+                                data-placeholder="Seleciona una o más etiquetas"
+                                style="width: 100%;">
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -66,15 +79,24 @@
 @push('styles')
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
 @endpush
 
 @push('scripts')
     <!-- bootstrap datepicker -->
     <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <!-- Select2 -->
+    <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
     <script>
         //Date picker
         $('#datepicker').datepicker({
         autoclose: true
         });
+        CKEDITOR.replace('editor1');
+        //Initialize Select2 Elements
+        $(".select2").select2();
     </script>
 @endpush
