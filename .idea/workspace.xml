@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d20c41f3-9e30-4ce5-a394-6984645272a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d20c41f3-9e30-4ce5-a394-6984645272a4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,6 +177,7 @@
       <updated>1604076104824</updated>
       <workItem from="1604076106657" duration="9430000" />
       <workItem from="1604129714968" duration="16446000" />
+      <workItem from="1604216367659" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="Setting template for the blog">
       <created>1604077407373</created>
@@ -257,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604155566594</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Links home and posts activated">
+      <created>1604216425032</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604216425032</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +294,7 @@
     <MESSAGE value="Login integration using adminLTE template II" />
     <MESSAGE value="Routes to dashboard" />
     <MESSAGE value="Posts list in dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Posts list in dashboard" />
+    <MESSAGE value="Links home and posts activated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Links home and posts activated" />
   </component>
 </project>
