@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PostsController;
 
 /*
@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\PostsController;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
 Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts.index');
 
 // Routes for login system

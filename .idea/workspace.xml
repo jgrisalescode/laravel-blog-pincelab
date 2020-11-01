@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d20c41f3-9e30-4ce5-a394-6984645272a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/PostFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PostFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +178,7 @@
       <option name="presentableId" value="Default" />
       <updated>1604076104824</updated>
       <workItem from="1604076106657" duration="9430000" />
-      <workItem from="1604129714968" duration="15876000" />
+      <workItem from="1604129714968" duration="16446000" />
     </task>
     <task id="LOCAL-00001" summary="Setting template for the blog">
       <created>1604077407373</created>
@@ -258,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604153374143</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Posts list in dashboard">
+      <created>1604155566594</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604155566594</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +287,7 @@
     <MESSAGE value="Login integration using adminLTE template" />
     <MESSAGE value="Login integration using adminLTE template II" />
     <MESSAGE value="Routes to dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Routes to dashboard" />
+    <MESSAGE value="Posts list in dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Posts list in dashboard" />
   </component>
 </project>
