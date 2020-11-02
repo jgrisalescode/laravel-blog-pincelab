@@ -9,7 +9,8 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::all()->sortByDesc('published_at');
+        // Using query scope see the model in the scopePublished method
+        $posts = Post::published()->get();
         return view('welcome', compact('posts'));
     }
 }
