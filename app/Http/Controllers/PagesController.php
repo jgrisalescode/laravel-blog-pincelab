@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::all();
+        $posts = Post::all()->sortByDesc('published_at');
         return view('welcome', compact('posts'));
     }
 }

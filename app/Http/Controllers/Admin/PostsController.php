@@ -31,13 +31,20 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         // Validation
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category' => 'required',
+            'excerpt' => 'required',
+            'tags' => 'required'
+        ]);
         // Save the post
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->get('body');
         $post->excerpt = $request->get('excerpt');
         // If you have any error trying save the date use Carbon::parse(***) method;
-        $post->published_at = $request->published_at;
+        $post->published_at = $request->has('published_at') ? $request->published_at : null;
         $post->category_id = $request->category;
         $post->save();
         // Tags
