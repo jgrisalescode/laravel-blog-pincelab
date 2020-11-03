@@ -19,13 +19,7 @@
         </div>
 
         <footer class="container-flex space-between">
-          <div class="buttons-social-media-share">
-            <ul class="share-buttons">
-              <li><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/svg/static/icons/svg/1384/1384053.svg"></a></li>
-              <li><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet"><img alt="Tweet" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/svg/static/icons/svg/733/733579.svg"></a></li>
-              <li><a href="http://pinterest.com/pin/create/button/?url=&description=" target="_blank" title="Pin it"><img alt="Pin it" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/premium-icon/icons/svg/2504/2504932.svg"></a></li>
-            </ul>
-          </div>
+          @include('partials.social-links', ['description' => $post->title])
           <div class="tags container-flex">
             @foreach ($post->tags as $tag)
                 <span class="tag c-gris">#{{$tag->name}}</span>
