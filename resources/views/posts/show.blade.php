@@ -19,10 +19,9 @@
         <footer class="container-flex space-between">
           <div class="buttons-social-media-share">
             <ul class="share-buttons">
-              <li><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="img/flat_web_icon_set/color/Facebook.png"></a></li>
-              <li><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet"><img alt="Tweet" src="img/flat_web_icon_set/color/Twitter.png"></a></li>
-              <li><a href="https://plus.google.com/share?url=" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="img/flat_web_icon_set/color/Google+.png"></a></li>
-              <li><a href="http://pinterest.com/pin/create/button/?url=&description=" target="_blank" title="Pin it"><img alt="Pin it" src="img/flat_web_icon_set/color/Pinterest.png"></a></li>
+              <li><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/svg/static/icons/svg/1384/1384053.svg"></a></li>
+              <li><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet"><img alt="Tweet" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/svg/static/icons/svg/733/733579.svg"></a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url=&description=" target="_blank" title="Pin it"><img alt="Pin it" class="img-fluid rounded-circle" style="width: 24px" src="https://www.flaticon.com/premium-icon/icons/svg/2504/2504932.svg"></a></li>
             </ul>
           </div>
           <div class="tags container-flex">

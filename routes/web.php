@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\PostsController as BlogPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\Admin\PostsController;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
-Route::get('/blog/{post}', [\App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
+Route::get('/blog/{post}', [BlogPostsController::class, 'show'])->name('posts.show');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts.index');
 Route::get('/admin/posts/create', [PostsController::class, 'create'])->name('admin.posts.create');

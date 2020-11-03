@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -41,6 +42,7 @@ class PostsController extends Controller
         // Save the post
         $post = new Post();
         $post->title = $request->title;
+        $post->slug = Str::slug($post->title);
         $post->body = $request->get('body');
         $post->excerpt = $request->get('excerpt');
         // If you have any error trying save the date use Carbon::parse(***) method;

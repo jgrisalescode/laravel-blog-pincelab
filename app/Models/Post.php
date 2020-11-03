@@ -34,4 +34,12 @@ class Post extends Model
                         ->where('published_at', '<=', Carbon::now())
                         ->sortByDesc('published_at');
     }
+
+    /**
+     * Ovewrite for get the post by title not for id (Slug)
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
