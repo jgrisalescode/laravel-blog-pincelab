@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PostsController;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/blog/{post}', [\App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts.index');
 Route::get('/admin/posts/create', [PostsController::class, 'create'])->name('admin.posts.create');
