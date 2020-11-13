@@ -10,6 +10,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+    ];
+
     // Converting publised_at as carbon instance for manage dates
     protected $dates = ['published_at'];
 

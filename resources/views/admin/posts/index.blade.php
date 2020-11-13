@@ -10,9 +10,12 @@
     </ol>
 @endsection
 @section('content')
-    <div class="box">
+    <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">Todas las publicaciones</h3>
+            <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> Crear publicación
+            </button>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -22,6 +25,7 @@
                     <th>ID</th>
                     <th>Título</th>
                     <th>Extracto</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,15 +56,46 @@
     <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script>
-        $(function () {
+        $(document).ready(function () {
             $('#posts-table').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false
             });
         });
     </script>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="{{route('admin.posts.store')}}" method="POST">
+            @csrf
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agrega el título de tu nueva publicación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
+                            <input
+                                value="{{old('title')}}"
+                                type="text"
+                                name="title" id="title"
+                                class="form-control"
+                                placeholder="Ingresa aquí el título de la publicación">
+                            {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Crear publicación</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 @endpush
