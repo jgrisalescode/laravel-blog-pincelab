@@ -22,12 +22,12 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    public function create()
-    {
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('admin.posts.create', compact('categories', 'tags'));
-    }
+    // public function create()
+    // {
+    //     $categories = Category::all();
+    //     $tags = Tag::all();
+    //     return view('admin.posts.create', compact('categories', 'tags'));
+    // }
 
     public function store(Request $request)
     {
@@ -46,31 +46,33 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     // Validation
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'body' => 'required',
-    //         'category' => 'required',
-    //         'excerpt' => 'required',
-    //         'tags' => 'required'
-    //     ]);
-    //     // Save the post
-    //     $post = new Post();
-    //     $post->title = $request->title;
-    //     $post->slug = Str::slug($post->title);
-    //     $post->body = $request->get('body');
-    //     $post->excerpt = $request->get('excerpt');
-    //     // If you have any error trying save the date use Carbon::parse(***) method;
-    //     $post->published_at = $request->has('published_at') ? $request->published_at : null;
-    //     $post->category_id = $request->category;
-    //     $post->save();
-    //     // Tags
-    //     $post->tags()->attach($request->get('tags'));
-    //     return back()->with('flash', 'Tu publicación ha sido creada');
-    // }
+    public function update(Request $request, Post $post)
+    {
+        // Validation
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category' => 'required',
+            'excerpt' => 'required',
+            'tags' => 'required'
+        ]);
+
+        // Save the post
+        $post->title = $request->title;
+        $post->slug = Str::slug($post->title);
+        $post->body = $request->get('body');
+        $post->excerpt = $request->get('excerpt');
+        // If you have any error trying save the date use Carbon::parse(***) method;
+        $post->published_at = $request->has('published_at') ? $request->published_at : null;
+        $post->category_id = $request->category;
+        $post->save();
+        // Tags
+        $post->tags()->attach($request->get('tags'));
+        return back()->with('flash', 'Tu publicación ha sido guardada');
+    }
 }

@@ -24,6 +24,7 @@ Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts
 Route::get('/admin/posts/create', [PostsController::class, 'create'])->name('admin.posts.create');
 Route::get('/admin.posts/{post}', [PostsController::class, 'edit'])->name('admin.posts.edit');
 Route::post('/admin/posts', [PostsController::class, 'store'])->name('admin.posts.store');
+Route::put('/admin/posts/{post}', [PostsController::class, 'update'])->name('admin.posts.update');
 
 // Routes for login system
 Auth::routes(['register' => false]); // ['register' => false] inside routes() if you do not want that the users can register
