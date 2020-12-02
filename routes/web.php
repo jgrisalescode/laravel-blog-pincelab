@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\PhotosController;
 use App\Http\Controllers\PostsController as BlogPostsController;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/admin/posts/create', [PostsController::class, 'create'])->name('adm
 Route::get('/admin.posts/{post}', [PostsController::class, 'edit'])->name('admin.posts.edit');
 Route::post('/admin/posts', [PostsController::class, 'store'])->name('admin.posts.store');
 Route::put('/admin/posts/{post}', [PostsController::class, 'update'])->name('admin.posts.update');
+Route::post('/admin/posts/{post}/photos', [PhotosController::class, 'store'])->name('admin.posts.photos.store');
 
 // Routes for login system
 Auth::routes(['register' => false]); // ['register' => false] inside routes() if you do not want that the users can register
