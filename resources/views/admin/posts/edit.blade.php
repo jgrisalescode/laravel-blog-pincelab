@@ -133,7 +133,7 @@
                 url: '/admin/posts/{{ $post->slug }}/photos',
                 paramName: 'photo',
                 acceptedFiles: 'image/*',
-                maxFilesize: 2,
+                maxFilesize: 4,
                 headers: {
                     'X-CSRF-TOKEN': '{{csrf_token()}}'
                 },
