@@ -35,6 +35,7 @@
                             </textarea>
                             {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -98,6 +99,26 @@
                 </div>
             </div>
         </form>
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row">
+                        @foreach($post->photos as $photo)
+                            <div class="col-md-2">
+                                <form action="{{route('admin.photos.destroy', $photo)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-xs" style="position: absolute">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                    <img src="{{$photo->url}}" alt="" class="img-responsive">
+                                </form>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -128,6 +149,7 @@
             autoclose: true
             });
             CKEDITOR.replace('editor1');
+            CKEDITOR.config.heigh = 315;
             // Dropzone
             let myDropzone = new Dropzone('.dropzone', {
                 url: '/admin/posts/{{ $post->slug }}/photos',
