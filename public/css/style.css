@@ -308,3 +308,7 @@ a.btn-bar {
 .gallery-photos {
     overflow: hidden;
 }
+
+.carousel-inner .carousel-item img{
+    width: 100%;
+}
