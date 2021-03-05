@@ -66,6 +66,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->slug = Str::slug($post->title);
         $post->body = $request->get('body');
+        $post->iframe = $request->get('iframe');
         $post->excerpt = $request->get('excerpt');
         // If you have any error trying save the date use Carbon::parse(***) method;
         $post->published_at = $request->has('published_at') ? $request->published_at : null;

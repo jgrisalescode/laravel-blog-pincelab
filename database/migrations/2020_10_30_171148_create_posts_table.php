@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->mediumText('excerpt')->nullable(); //Extracto
+            $table->mediumText('iframe')->nullable();
             $table->text('body')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
