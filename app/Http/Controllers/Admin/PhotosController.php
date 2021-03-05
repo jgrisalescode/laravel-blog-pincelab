@@ -33,6 +33,8 @@ class PhotosController extends Controller
     public function destroy(Photo $photo)
     {
         $photo->delete();
+        $photoUrl = str_replace('storage', 'public', $photo->url);
+        Storage::delete($photoUrl);
         return back()->with('flash', 'Foto eliminada');
     }
 }

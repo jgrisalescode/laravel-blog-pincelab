@@ -11,6 +11,28 @@
     </ol>
 @endsection
 @section('content')
+    @if($post->photos->count())
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row">
+                        @foreach($post->photos as $photo)
+                            <div class="col-md-2">
+                                <form action="{{route('admin.photos.destroy', $photo)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-xs" style="position: absolute">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                    <img src="{{$photo->url}}" alt="" class="img-responsive">
+                                </form>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @csrf
@@ -99,26 +121,6 @@
                 </div>
             </div>
         </form>
-        <div class="col-md-8">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="row">
-                        @foreach($post->photos as $photo)
-                            <div class="col-md-2">
-                                <form action="{{route('admin.photos.destroy', $photo)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-xs" style="position: absolute">
-                                        <i class="fa fa-remove"></i>
-                                    </button>
-                                    <img src="{{$photo->url}}" alt="" class="img-responsive">
-                                </form>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
