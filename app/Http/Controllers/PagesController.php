@@ -14,10 +14,7 @@ class PagesController extends Controller
         // $posts = Post::published()->get();
 
         // The queryScope is not working form model
-        $posts = Post::all()
-                    ->whereNotNull('published_at')
-                    ->where('published_at', '<=', Carbon::now())
-                    ->sortByDesc('published_at');
+        $posts = Post::published()->paginate(1);
 
         return view('welcome', compact('posts'));
     }

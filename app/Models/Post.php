@@ -42,10 +42,9 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        $posts = Post::all()
-                        ->whereNotNull('published_at')
-                        ->where('published_at', '<=', Carbon::now())
-                        ->sortByDesc('published_at');
+        return $query->whereNotNull('published_at')
+                    ->where('published_at', '<=', Carbon::now())
+                    ->orderBy('published_at', 'desc');
     }
 
     /**
