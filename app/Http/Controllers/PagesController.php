@@ -14,7 +14,7 @@ class PagesController extends Controller
         // $posts = Post::published()->get();
 
         // The queryScope is not working form model
-        $posts = Post::published()->paginate(1);
+        $posts = Post::published()->paginate(5);
 
         return view('welcome', compact('posts'));
     }
