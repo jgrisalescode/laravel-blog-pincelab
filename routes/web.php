@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoriesController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\PostsController as BlogPostsController;
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/blog/{post}', [BlogPostsController::class, 'show'])->name('posts.show');
 Route::get('/categorias/{category}', [CategoriesController::class, 'show'])->name('categories.show');
+Route::get('/etiquetas/{tag}', [TagsController::class, 'show'])->name('tags.show');
 
 Route::group([
     'prefix' => 'admin',
