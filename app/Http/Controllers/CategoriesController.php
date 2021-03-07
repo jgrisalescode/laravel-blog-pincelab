@@ -53,7 +53,7 @@ class CategoriesController extends Controller
         // Way to see the post into categories query
         // return $category->load('posts');
         // Return a collection of posts
-        $posts =  $category->posts()->paginate(5);
+        $posts =  $category->posts()->paginate(1);
         return view('welcome', compact('posts', 'category'));
     }
 

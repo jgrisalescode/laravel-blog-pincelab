@@ -21,5 +21,15 @@ class DatabaseSeeder extends Seeder
         Category::factory(4)->create();
         Post::factory(3)->create();
         Tag::factory(5)->create();
+
+        // Post - Tags seeder
+        $tags = Tag::all();
+        $posts = Post::all();
+
+        foreach ($posts as $post){
+            $tagNumber = rand(1, 4);
+            $newTags = $tags->slice(0, $tagNumber);
+            $post->tags()->attach($newTags);
+        }
     }
 }
