@@ -50,6 +50,7 @@ class PostsController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        // return $request->all();
         // Validation
         $request->validate([
             'title' => 'required',
@@ -66,10 +67,18 @@ class PostsController extends Controller
         $post->excerpt = $request->get('excerpt');
         // If you have any error trying save the date use Carbon::parse(***) method;
         $post->published_at = $request->has('published_at') ? $request->published_at : null;
-        $post->category_id = $request->category;
+        $post->category_id = Category::find($category = $request->category)
+                                ? $category
+                                : Category::create(['name' => $category])->id;
         $post->save();
         // Tags
-        $post->tags()->attach($request->get('tags'));
+        $tags = [];
+        foreach ($request->get('tags') as $tag){
+            $tags[] = Tag::find($tag)
+                            ? $tag
+                            : Tag::create(['name' => $tag])->id;
+        }
+        $post->tags()->attach($tags);
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
     }
 }

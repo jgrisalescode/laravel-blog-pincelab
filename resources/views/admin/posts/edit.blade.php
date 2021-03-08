@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group {{$errors->has('category') ? 'has-error' : ''}}">
                             <label for="category_id">Categorías</label>
-                            <select name="category" id="category" class="form-control">
+                            <select name="category" id="category" class="form-control select2">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}" {{old('category', $post->category_id) == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
@@ -151,7 +151,9 @@
     <script>
         $(document).ready(function (){
             //Initialize Select2 Elements
-            $('.select2').select2();
+            $('.select2').select2({
+                tags: true
+            });
             //Date picker
             $('#datepicker').datepicker({
             autoclose: true
