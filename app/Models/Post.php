@@ -16,7 +16,11 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'slug',
+        'body',
+        'iframe',
+        'excerpt',
+        'published_at',
+        'category_id',
     ];
 
     // Converting publised_at as carbon instance for manage dates
@@ -60,5 +64,24 @@ class Post extends Model
     {
         $this->attributes['title'] = $title;
         $this->attributes['slug'] = Str::slug($title);
+    }
+
+    public function setPublishedAtAttribute($published_at)
+    {
+        $this->attributes['published_at'] = $published_at ? Carbon::parse($published_at) : null;
+    }
+
+    public function setCategoryIdAttribute($category)
+    {
+        $this->attributes['category_id'] = Category::find($category)
+                                            ? $category
+                                            : Category::create(['name' => $category])->id;
+    }
+
+    public function syncTags($tags){
+        $tagsIds = collect($tags)->map(function ($tag){
+            return Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        });
+        return $this->tags()->attach($tagsIds);
     }
 }

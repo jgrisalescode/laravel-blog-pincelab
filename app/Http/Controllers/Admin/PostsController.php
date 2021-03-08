@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -22,20 +23,8 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    // public function create()
-    // {
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-    //     return view('admin.posts.create', compact('categories', 'tags'));
-    // }
-
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        // Validation
-        $request->validate([
-            'title' => 'required',
-        ]);
-
         $post = Post::create($request->only('title'));
 
         return redirect()->route('admin.posts.edit', compact('post'));
@@ -48,37 +37,11 @@ class PostsController extends Controller
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
-        // return $request->all();
-        // Validation
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'category' => 'required',
-            'excerpt' => 'required',
-            'tags' => 'required'
-        ]);
-
-        // Save the post
-        $post->title = $request->title;
-        $post->body = $request->get('body');
-        $post->iframe = $request->get('iframe');
-        $post->excerpt = $request->get('excerpt');
-        // If you have any error trying save the date use Carbon::parse(***) method;
-        $post->published_at = $request->has('published_at') ? $request->published_at : null;
-        $post->category_id = Category::find($category = $request->category)
-                                ? $category
-                                : Category::create(['name' => $category])->id;
-        $post->save();
-        // Tags
-        $tags = [];
-        foreach ($request->get('tags') as $tag){
-            $tags[] = Tag::find($tag)
-                            ? $tag
-                            : Tag::create(['name' => $tag])->id;
-        }
-        $post->tags()->attach($tags);
+        // We can use update method if the request matches with fillable in model
+        $post->update($request->all());
+        $post->syncTags($request->get('tags'));
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
     }
 }
