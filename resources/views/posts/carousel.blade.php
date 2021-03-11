@@ -2,7 +2,7 @@
     <div class="carousel-inner">
         @foreach ($post->photos as $photo)
             <div class="carousel-item {{$loop->first ? 'active' : ''}}">
-                <img src="{{$photo->url}}" alt="">
+                <img src="{{asset('/storage/'.$photo->url)}}" alt="">
             </div>
         @endforeach
     </div>

@@ -42,6 +42,13 @@ class PostsController extends Controller
         // We can use update method if the request matches with fillable in model
         $post->update($request->all());
         $post->syncTags($request->get('tags'));
-        return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'La publicación ha sido guardada');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->tags()->detach();
+        $post->delete();
+        return redirect()->route('admin.posts.index', $post)->with('flash', 'La publicación ha sido eliminada');
     }
 }

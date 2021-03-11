@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Storage::disk('public')->deleteDirectory('posts');
         User::factory()->create();
         Category::factory(4)->create();
         Post::factory(3)->create();

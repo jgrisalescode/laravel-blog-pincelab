@@ -42,8 +42,22 @@
                                 >
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                                <a
+                                    href="{{route('admin.posts.edit', $post)}}"
+                                    class="btn btn-xs btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <form
+                                    action="{{route('admin.posts.destroy', $post)}}"
+                                    method="POST"
+                                    style="display: inline"
+                                >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-xs btn-danger" onclick="confirm('Desea eliminar el Post?')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
