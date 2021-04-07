@@ -60,11 +60,35 @@ class Post extends Model
         return 'slug';
     }
 
-    public function setTitleAttribute($title)
+    public static function create(array $attributes = [])
     {
-        $this->attributes['title'] = $title;
-        $this->attributes['slug'] = Str::slug($title);
+        $post = static::query()->create($attributes);
+        $post->generateSlug();
+
+        return $post;
     }
+
+    public function generateSlug()
+    {
+        $slug = Str::slug($this->title);
+
+        if ($this->where('slug', $slug)->exists()){
+            $slug = "{$slug}-{$this->id}";
+        }
+
+        $this->slug = $slug;
+        $this->save();
+    }
+
+//    public function setTitleAttribute($title)
+//    {
+//        $this->attributes['title'] = $title;
+//        $slug = Str::slug($title);
+//        if(Post::where('slug', $slug)->exists()){
+//            $slug = $slug . "-2";
+//        }
+//        $this->attributes['slug'] = $slug;
+//    }
 
     public function setPublishedAtAttribute($published_at)
     {
