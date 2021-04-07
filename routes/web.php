@@ -20,7 +20,11 @@ use App\Http\Controllers\PostsController as BlogPostsController;
 |
 */
 
-Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/', [PagesController::class, 'home'])->name('pages.home');
+Route::get('about', [PagesController::class, 'about'])->name('pages.about');
+Route::get('archive', [PagesController::class, 'archive'])->name('pages.archive');
+Route::get('contact', [PagesController::class, 'contact'])->name('pages.contact');
+
 Route::get('/blog/{post}', [BlogPostsController::class, 'show'])->name('posts.show');
 Route::get('/categorias/{category}', [CategoriesController::class, 'show'])->name('categories.show');
 Route::get('/etiquetas/{tag}', [TagsController::class, 'show'])->name('tags.show');
