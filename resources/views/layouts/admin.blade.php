@@ -378,12 +378,12 @@ desired effect
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/adminlte/js/app.min.js"></script>
+
+@unless(request()->is('admin/posts/*'))
+    @include('admin.posts.create')
+@endunless()
+
 @stack('scripts')
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-@include('admin.posts.create')
+<script src="/adminlte/js/app.min.js"></script>
 </body>
 </html>

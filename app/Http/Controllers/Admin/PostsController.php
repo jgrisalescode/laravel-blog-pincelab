@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -23,8 +22,9 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request, ['title' => 'required|min:3']);
         $post = Post::create($request->only('title'));
 
         return redirect()->route('admin.posts.edit', compact('post'));

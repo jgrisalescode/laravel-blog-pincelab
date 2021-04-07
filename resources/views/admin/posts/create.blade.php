@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form action="{{route('admin.posts.store')}}" method="POST">
+    <form action="{{route('admin.posts.store', '#create')}}" method="POST">
         @csrf
         <div class="modal-dialog">
             <div class="modal-content">
@@ -15,10 +15,13 @@
                         <input
                             value="{{old('title')}}"
                             type="text"
+                            id="exampleModalTitle"
                             name="title" id="title"
                             class="form-control"
                             placeholder="Ingresa aquí el título de la publicación"
-                            required>
+                            autofocus
+                            required
+                            >
                         {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
@@ -30,3 +33,20 @@
         </div>
     </form>
 </div>
+@push('scripts')
+    <script>
+        if(window.location.hash === '#create'){
+            $('#exampleModal').modal('show');
+        }
+
+        $('#exampleModal').on('hide.bs.modal', function (){
+            window.location.hash = '#'
+        })
+
+        $('#exampleModal').on('shown.bs.modal', function (){
+            $('#exampleModalTitle').focus()
+            window.location.hash = '#create'
+        })
+
+    </script>
+@endpush
