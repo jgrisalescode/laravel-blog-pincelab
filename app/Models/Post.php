@@ -52,6 +52,11 @@ class Post extends Model
                     ->orderBy('published_at', 'desc');
     }
 
+    public function isPublished()
+    {
+        return  !is_null($this->published_at) && $this->published_at < today();
+    }
+
     /**
      * Ovewrite for get the post by title not for id (Slug)
      */
