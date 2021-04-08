@@ -20,6 +20,7 @@ class Post extends Model
         'iframe',
         'excerpt',
         'published_at',
+        'user_id',
         'category_id',
     ];
 
@@ -39,6 +40,11 @@ class Post extends Model
     public function photos(): HasMany
     {
         return $this->hasMany(Photo::class);
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**

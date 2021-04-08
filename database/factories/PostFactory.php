@@ -30,6 +30,7 @@ class PostFactory extends Factory
             'excerpt' => $this->faker->sentence(7),
             'body' => $this->faker->paragraph(),
             'category_id' => $this->faker->numberBetween(1,3),
+            'user_id' => 1,
             'published_at' => Carbon::now()->subDays($this->faker->numberBetween(1,4)),
         ];
     }

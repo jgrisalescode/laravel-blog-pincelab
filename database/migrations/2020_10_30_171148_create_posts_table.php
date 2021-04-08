@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('excerpt')->nullable(); //Extracto
             $table->mediumText('iframe')->nullable();
             $table->text('body')->nullable();
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
