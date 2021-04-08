@@ -19,12 +19,13 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = auth()->user()->posts;
         return view('admin.posts.index', compact('posts'));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', new Post);
         $this->validate($request, ['title' => 'required|min:3']);
         // $post = Post::create($request->only('title'));
         $post = Post::create([
@@ -37,13 +38,18 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
+        $this->authorize('view', $post);
+
+        return view('admin.posts.edit', [
+            'post' => $post,
+            'tags' => Tag::all(),
+            'categories' => Category::all(),
+        ]);
     }
 
     public function update(StorePostRequest $request, Post $post)
     {
+        $this->authorize('update', $post);
         // We can use update method if the request matches with fillable in model
         $post->update($request->all());
         $post->syncTags($request->get('tags'));
@@ -52,6 +58,7 @@ class PostsController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->tags()->detach();
         $post->delete();
         return redirect()->route('admin.posts.index', $post)->with('flash', 'La publicación ha sido eliminada');

@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +21,17 @@ class DatabaseSeeder extends Seeder
     {
         Storage::disk('public')->deleteDirectory('posts');
         User::factory()->create();
+        User::create(
+            [
+                'name' => 'Tester',
+                'email' => 'tester@blog.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt(12345678), // 12345678
+                'remember_token' => Str::random(10),
+            ]
+        );
         Category::factory(4)->create();
-        Post::factory(3)->create();
+        Post::factory(5)->create();
         Tag::factory(5)->create();
 
         // Post - Tags seeder
