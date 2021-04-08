@@ -46,7 +46,7 @@ class TagsController extends Controller
      */
     public function show(Tag $tag)
     {
-        return view('welcome', [
+        return view('pages.home', [
             'tag' => $tag,
             'posts' => $tag->posts()->paginate(1)
         ]);

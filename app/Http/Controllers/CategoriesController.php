@@ -54,7 +54,7 @@ class CategoriesController extends Controller
         // return $category->load('posts');
         // Return a collection of posts
         $posts =  $category->posts()->paginate(1);
-        return view('welcome', compact('posts', 'category'));
+        return view('pages.home', compact('posts', 'category'));
     }
 
     /**
